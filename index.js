@@ -71,4 +71,4 @@ app.get('/', (req, res) => {
     res.send('welcome back')
 })
 
-app.listen(port);
+app.listen(process.env.PORT || port);

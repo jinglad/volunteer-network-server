@@ -34,7 +34,6 @@ client.connect(err => {
     })
 
     app.get('/events', (req, res) => {
-        console.log("clicked events")
         eventsCollection.find({})
             .toArray((err, documents) => {
                 res.send(documents);

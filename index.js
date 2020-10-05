@@ -15,6 +15,10 @@ app.use(cors());
 
 const port = 5000;
 
+app.get('/', (req, res) => {
+    res.send('welcome back')
+})
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const eventsCollection = client.db("volunteerNetwork").collection("events");
@@ -66,9 +70,5 @@ client.connect(err => {
     })
 });
 
-
-app.get('/', (req, res) => {
-    res.send('welcome back')
-})
 
 app.listen(process.env.PORT || port);

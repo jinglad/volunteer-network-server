@@ -17,8 +17,8 @@ const port = 5000;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-    const eventsCollection = client.db(process.env.DB_NAME).collection("events");
-    const volunteersCollection = client.db(process.env.DB_NAME).collection("volunteers");
+    const eventsCollection = client.db(process.env.DB_NAME).collection(process.env.DB_COLL_1);
+    const volunteersCollection = client.db(process.env.DB_NAME).collection(process.env.DB_COLL_2);
 
     app.get('/', (req, res) => {
         res.send('welcome back')
@@ -34,6 +34,7 @@ client.connect(err => {
     })
 
     app.get('/events', (req, res) => {
+        console.log("clicked events")
         eventsCollection.find({})
             .toArray((err, documents) => {
                 res.send(documents);
